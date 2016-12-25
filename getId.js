@@ -15,9 +15,13 @@ function getID(callback)
 
 
 	chrome.tabs.query({'currentWindow': true, 'url': "*://vk.com/*"}, function (tabs) {
-		
-    	url = tabs[0].url;
-     	parseURL(url);
+		if (tabs.length > 0)
+		{
+			url = tabs[0].url;
+     		parseURL(url);
+		}
+
+    	
 	});
 }
 
