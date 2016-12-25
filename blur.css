@@ -1,0 +1,14 @@
+.plugin-encrypted-message {
+	-webkit-filter: url(#blur);
+	filter: url(#blur);
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5');
+}
+.plugin-encrypted-message:hover {
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+	-webkit-filter: blur(0px);
+	filter: blur(0px);
+	-webkit-transition: 0.3s -webkit-filter linear;
+	transition: 0.3s filter linear;
+}
