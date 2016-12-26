@@ -13,7 +13,7 @@ function getKey (id)
 	  			if (typeof items.passwords[id] !== "undefined")
                 {
 		            chrome.tabs.executeScript({
-		                code: 'key = "' + items.passwords[id] + '";alert(key);'
+		                code: 'key = "' + items.passwords[id] + '";'
 		            });
 		        }
 	  		}

@@ -1,8 +1,23 @@
+function preparePassword(password)
+{
+    const offset = 100;
+    var alphabet = String.fromCharCode;
+    var modifedPassword = "";
+
+    for (var i = 0; i < password.length; i++)
+    {
+        modifedPassword += alphabet(password.charCodeAt(i) + offset);
+    }
+    return modifedPassword;
+}
+
 function updatePasswords(id, password)
 {
     function setCurrent(passwords, id, password)
     {
-        passwords[id] = password;
+        var modifedPassword = preparePassword(password);
+        
+        passwords[id] = modifedPassword;
 
         chrome.storage.sync.set({
             passwords: passwords
@@ -30,7 +45,7 @@ function updatePasswords(id, password)
 function save_options(id) {
     
     var password = document.getElementById('password').value;
-    var hashedPassword = SHA256(password);
+    //var hashedPassword = SHA256(password);
 
 
     if (password != '')
@@ -41,8 +56,8 @@ function save_options(id) {
             
           return;
         }
-
-        updatePasswords(id, hashedPassword);
+        //TODO get encryption
+        updatePasswords(id, password);
     }
 
 }

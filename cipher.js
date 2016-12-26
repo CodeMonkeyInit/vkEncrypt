@@ -3,10 +3,9 @@ const messageEnding = ":enc";
 const enctyptedClassName = " plugin-encrypted-message";
 const inputMessageClass = "im_editable";
 const messageClass = ["im_msg_text", "im-mess--text"];
-const keyUndefined = "Ключ не задан";
 const html = 1;
 const js = 0;
-var key;
+var key = "";
 
 function replaceTags(message, type)
 {
@@ -51,8 +50,12 @@ function encryptMessage(key)
 	}
 }
 
-function decryptAllMessages(classList, key = "", encryptionKeyword)
+function MessageDecryptor(classList, encryptionKeyword)
 {
+	var messagesDecrypted;
+	//in ms
+	var timeout = 50;
+
 	function prepareMessage(message)
 	{
 		var messageEnd = message.indexOf(messageEnding);
@@ -74,26 +77,53 @@ function decryptAllMessages(classList, key = "", encryptionKeyword)
 			if ( -1 != message.indexOf(encryptionKeyword) )
 			{
 				messages[i].className += enctyptedClassName;
-				message = prepareMessage(message);
 				
-				if ("" == key)
+				if ("" != key)
 				{
-					messages[i].innerHTML = keyUndefined;
-				}
-				else
-				{
+					message = prepareMessage(message);
 					messages[i].innerHTML = replaceTags( vernamCipher(message, key), js );
 				}
-				
+
+				messagesDecrypted++;
 			}
 		}
 	}
 
-	for (var i = 0; i < classList.length; i++)
+	function decrypterTimer()
 	{
-		var messages = document.getElementsByClassName(classList[i]);
+		//in ms
+		messagesDecrypted = 0;
 
-		decryptMessages(messages);
+
+		for (var i = 0; i < classList.length; i++)
+		{
+			var messages = document.getElementsByClassName(classList[i]);
+
+			decryptMessages(messages);
+		}
+
+		if (0 == messagesDecrypted)
+		{
+			// in ms
+			timeout += 10;
+		}
+		else
+		{
+			timeout = 50;
+		}
+
+		if (timeout > 500)
+		{
+			timeout = 500;
+		}
+
+		setTimeout(decrypterTimer, timeout);
 	}
+	//Initialization
+
+	setTimeout(decrypterTimer, timeout);
+
+
 }
-setInterval(decryptAllMessages, 500, messageClass, key, encryptionKeyword);
+
+var decryptor = new MessageDecryptor(messageClass, encryptionKeyword);

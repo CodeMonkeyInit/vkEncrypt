@@ -46,15 +46,16 @@ function getEncryptClickHandler() {
   	};
 };
 
-/**
- * Create a context menu which will only show up for images.
- */
+//контекстное меню для шифровки сообщения
 chrome.contextMenus.create({
-  "title" : "Зашифровать",
-  "type" : "normal",
-  "contexts" : ["all"],
-  "onclick" : getEncryptClickHandler()
+	"title" : "Зашифровать",
+	"type" : "normal",
+	"contexts" : ["all"],
+	"onclick" : getEncryptClickHandler()
 });
 
-setInterval(updateKey, 50);
+//todo  обновлять ключ только при смене страницы/вкладки
+chrome.tabs.onUpdated.addListener(function(tabID, changeInfo, tab){
+	updateKey();
+});
 
