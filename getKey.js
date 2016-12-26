@@ -4,15 +4,18 @@ function getKey (id)
 	{
 		chrome.storage.sync.get(
 		{
-	    	password: null
+	    	passwords: null
 	  	},  
 	  	function(items) 
 	  	{
-	  		if (null != items.password)
+	  		if (null != items.passwords)
 	  		{
-	            chrome.tabs.executeScript({
-	                code: 'key = "' + items.password + '";'
-	            });
+	  			if (typeof items.passwords[id] !== "undefined")
+                {
+		            chrome.tabs.executeScript({
+		                code: 'key = "' + items.passwords[id] + '";alert(key);'
+		            });
+		        }
 	  		}
 		});
 	}

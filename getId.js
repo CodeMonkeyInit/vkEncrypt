@@ -14,7 +14,7 @@ function getID(callback)
 	}
 
 
-	chrome.tabs.query({'currentWindow': true, 'url': "*://vk.com/*"}, function (tabs) {
+	chrome.tabs.query({'currentWindow': true, 'url': "*://vk.com/*", 'active': true}, function (tabs) {
 		if (tabs.length > 0)
 		{
 			url = tabs[0].url;

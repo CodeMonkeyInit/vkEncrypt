@@ -1,6 +1,6 @@
 {
   "name" : "EncryptMessages",
-  "version" : "0.2",
+  "version" : "0.3",
   "description" : "Encrypt your VK messages",
   "background" : { "scripts": ["getId.js", "getKey.js" ,"background.js"] },
   "permissions" : [
@@ -30,7 +30,7 @@
   "commands": {
     "encrypt": {
       "suggested_key": {
-        "default": "Ctrl+E",
+        "default": "Ctrl+Q",
         "mac": "Command+E"
       },
     "description": "Encrypt message"

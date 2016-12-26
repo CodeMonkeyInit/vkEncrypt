@@ -75,6 +75,7 @@ function decryptAllMessages(classList, key = "", encryptionKeyword)
 			{
 				messages[i].className += enctyptedClassName;
 				message = prepareMessage(message);
+				
 				if ("" == key)
 				{
 					messages[i].innerHTML = keyUndefined;

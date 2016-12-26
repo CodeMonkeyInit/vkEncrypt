@@ -9,13 +9,17 @@ function getKeyForPlugin(id)
 	{
 		chrome.storage.sync.get(
 		{
-	    	password: null
+	    	passwords: null
 	  	},  
 	  	function(items) 
 	  	{
-	  		if (null != items.password)
+	  		if (null != items.passwords[id])
 	  		{
-	            encryptMessage(items.password);
+	            encryptMessage(items.passwords[id]);
+	  		}
+	  		else
+	  		{
+	  			alert("Сначала введите ключ!");
 	  		}
 		});
 	}
@@ -23,11 +27,6 @@ function getKeyForPlugin(id)
 
 function encryptMessage(key)
 {
-	if ("" == key)
-	{
-		alert("Сначала введите ключ!");
-	}
-
 	chrome.tabs.executeScript({
 		code: 'encryptMessage("' + key + '");'
 	});
