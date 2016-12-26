@@ -20,8 +20,6 @@ function getID(callback)
 			url = tabs[0].url;
      		parseURL(url);
 		}
-
-    	
 	});
 }
 

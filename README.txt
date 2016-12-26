@@ -1,1 +1,1 @@
-ctrl+e to encrypt message
+alt+e to encrypt message

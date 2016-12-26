@@ -4,6 +4,7 @@
   "description" : "Encrypt your VK messages",
   "background" : { "scripts": ["getId.js", "getKey.js" ,"background.js"] },
   "permissions" : [
+    "contextMenus",
     "storage",
     "tabs",
     "http://vk.com/",
