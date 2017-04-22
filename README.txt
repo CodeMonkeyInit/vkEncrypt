@@ -1,1 +1,1 @@
-alt+e to encrypt message
+cmd+e to encrypt message or rightclick -> Encrypt
