@@ -1,6 +1,6 @@
 function preparePassword(password)
 {
-    const offset = 100;
+    const offset = 50;
     var alphabet = String.fromCharCode;
     var modifedPassword = "";
 

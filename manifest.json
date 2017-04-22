@@ -7,8 +7,8 @@
     "contextMenus",
     "storage",
     "tabs",
-    "http://vk.com/",
-    "https://vk.com/"
+    "http://*/*",
+    "https://*/*"
    ],
   "minimum_chrome_version" : "6.0.0.0",
   "icons" : {
@@ -22,9 +22,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://vk.com/*", "https://vk.com/*"],
+      "matches": ["http://*/*", "https://*/*"],
       "css": ["blur.css"],
-      "js": ["cipher.js"]
+      "js": ["jquery.js" , "cipher.js"]
     }
   ],
   "commands": {
